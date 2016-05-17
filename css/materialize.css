@@ -4546,10 +4546,12 @@ small {
 .card .card-title {
   font-size: 24px;
   font-weight: 300;
+
 }
 
 .card .card-title.activator {
   cursor: pointer;
+  padding: 2rem;
 }
 
 .card.small, .card.medium, .card.large {

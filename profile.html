@@ -22,11 +22,13 @@
     for (var i=0;i<data.length;i++) {
 
         if (data[i].userId == sessionStorage.userId) {
+
           $('#postAll').append($('<div/>')
             .attr("class", "col s3 m3")
             .append($('<div/>')
               .attr("class", "card  white")
-              .append($('<span style="color:blue"/>')
+              
+              .append($('<span style="color:blue; padding: 1rem"/>')
                 .attr("class", "card-title activator")
                 .text(data[i].title)
               )  
