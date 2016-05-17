@@ -20,10 +20,8 @@
     var photosAPI = "http://jsonplaceholder.typicode.com/photos";
     $.getJSON(albumsAPI, function (data) {
       $.getJSON(photosAPI, function (data1) {
-    console.log(data);  
-    console.log(data1);   
-
-    for (var i=0;i<data.length;i++) {
+        $('#loadingimage').hide();
+     for (var i=0;i<data.length;i++) {
         if (data[i].userId == sessionStorage.userId) {
           $('#postAll').append($('<ul class= "collapsible" data-collapsible = "accordion">').collapsible()
                      .append($('<li/>')
@@ -98,7 +96,10 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div id="postAll" class="container">
-   
+         <div class="progress" id="loadingimage">
+              <div class="indeterminate"></div>
+          </div>
+          <h5>Albums</h5>
     
      
     </div>
@@ -108,7 +109,7 @@
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
   <script type="text/javascript" src="slick/slick.min.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script type="text/javascript">
     $('#logo-container').text("UserId:"+ sessionStorage.userId);
@@ -123,6 +124,7 @@
         slidesToShow: 3,
         slidesToScroll: 3
       });
+    });
      
   </script>
   

@@ -18,8 +18,7 @@
     var comentsAPI = "http://jsonplaceholder.typicode.com/comments";
     $.getJSON(jsonplaceholderAPI, function (data) {
       $.getJSON(comentsAPI, function (data1) {
-    console.log(data);  
-    console.log(data1);    
+      $('#loadingimage').hide();
     for (var i=0;i<data.length;i++) {
 
         if (data[i].userId == sessionStorage.userId) {
@@ -77,6 +76,7 @@
     }
       });
     });  
+    
 
   }  
 
@@ -103,7 +103,9 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div id="postAll" class="container">
-      
+      <div class="progress" id="loadingimage">
+        <div class="indeterminate"></div>
+      </div>
       
      
     </div>
@@ -115,7 +117,7 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script type="text/javascript">
     $('#logo-container').text("UserId:"+ sessionStorage.userId);
