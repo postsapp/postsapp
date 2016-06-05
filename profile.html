@@ -3,137 +3,79 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Post app</title>
+  <title>Finovertech Profile</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="font/googlefonts.css" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="shortcut icon" href="http://www.finovertech.com/wp-content/uploads/2015/10/TOFIconAlphaGray.png" />
+  <script src="js/main.js"></script>
+  <script src="js/sweetalert.min.js"></script>
 
-
-  <script type="text/javascript">
-    
-    function profileLoad(){
-    var jsonplaceholderAPI = "http://jsonplaceholder.typicode.com/posts";
-    var comentsAPI = "http://jsonplaceholder.typicode.com/comments";
-    $.getJSON(jsonplaceholderAPI, function (data) {
-      $.getJSON(comentsAPI, function (data1) {
-      $('#loadingimage').hide();
-    for (var i=0;i<data.length;i++) {
-
-        if (data[i].userId == sessionStorage.userId) {
-
-          $('#postAll').append($('<div/>')
-            .attr("class", "col s3 m3")
-            .append($('<div/>')
-              .attr("class", "card  white")
-              
-              .append($('<span style="color:blue; padding: 1rem"/>')
-                .attr("class", "card-title activator")
-                .text(data[i].title)
-              )  
-            
-              .append($('<div/>')
-              .attr("class", "card-content")
-              .text(data[i].body)
-              )
-
-              .append($('<div/>')
-              .attr("class", "card-action")
-              .text("Comments")
-                  .append($('<ul class= "collapsible" data-collapsible = "accordion">').collapsible()
-                      .attr("id", i)
-                      
-                  )
-                            
-              )
-
-            ) 
-                
-                
-          ); 
-          
-        
-        for(var j=0;j<data1.length;j++){ 
-              if (data[i].id == data1[j].postId) {
-                  $('#'+i+'').append($('<li/>')
-                        .append($('<div/>')
-                              .attr("class", "collapsible-header")
-                              .append($('<a style="color:blue"/>')
-                                  .text(data1[j].name)
-                              )
-                              
-                        ) 
-                        .append($('<div/>')
-                            .attr("class", "collapsible-body blue-grey lighten-5")
-                            .append($('<p/>')
-                                .text(data1[j].body)
-                            )
-                            
-                        )   
-                   );  
-              }
-              } 
-      }
-    }
-      });
-    });  
-
-
-  }  
-
-   
-  </script>
 </head>
 
-<body onload="profileLoad()" style="background-color: #E9EBEE">
-  <nav class="blue darken-4" role="navigation">
-    <div class="nav-wrapper container"><a  href="#" class="brand-logo">PostApp</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a id="logo-container" href="#">User</a></li>
-        <li><a href="index.html">New User</a></li>
-        <li><a href="album.html">Album</a></li>
-        <li><a href="profile.html">Post</a></li>
+<body onload="getSingleUserInfo()" style="background-color: #E9EBEE">
+  <nav class="indigo darken-4" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="" class="brand-logo">Finovertech Profile</a>
+    <ul class="right">
+        <li><a id="logo-container" href="index.html">Logout</a></li>
       </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-      <li><a id="logo-container" href="#">User</a></li>
-        <li><a href="index.html">New User</a></li>
-        <li><a href="album.html">Album</a></li>
-        <li><a href="profile.html">Post</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
   <div class="section no-pad-bot" id="index-banner">
-    <div id="postAll" class="container">
-      <div class="progress" id="loadingimage">
-        <div class="indeterminate" style="color: #2196f3"></div>
-      </div>
+    <div class="container">
+
+    <div class="row">
+        <div class="col s12 m4">
+          <div class="card-panel white">
+
+            <h5 class="card-title activator grey-text text-darken-4">Details</h5>
+            <h6 class="card-title activator grey-text text-darken-4" id="email">Email</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="phone">Phone</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="website">Website</h6>
+
+            <h5 class="card-title activator grey-text text-darken-4" >Address</h5>
+            <h6 class="card-title activator grey-text text-darken-4" id="suite">suite</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="street">street</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="city">city</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="zipcode">zipcode</h6>
+
+            <h5 class="card-title activator grey-text text-darken-4" >Company</h5>
+            <h6 class="card-title activator grey-text text-darken-4" id="companyname">Company Name</h6>
+            <h6 class="card-title activator grey-text text-darken-4" id="companycatchPhrase">Company Catch Phrase</h6>
+            
+          </div>
+        </div>
+        <div class="col s12 m8" >
+          <a class="waves-effect waves-light btn indigo" style="width:49%" id="postButton" onclick=showContent("post")><i class="material-icons left">assignment</i>
+          Post
+          </a>
+          <a class="waves-effect waves-light btn indigo lighten-2" style="width:49%" id="albumButton" onclick=showContent("album")><i class="material-icons left">perm_media</i>
+          Album
+          </a>
+
+          <ul class="collection" id="collectionPosts" >
+          </ul>
+          <ul class="collection" id="collectionAlbums" style="display: none; width: 130%;">
+          </ul>
+        </div>
+    </div>
       
-     
     </div>
   </div>
 
-
-
-
-
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
-  <script type="text/javascript">
-    $('#logo-container').text("UserId:"+ sessionStorage.userId);
-  </script>
   <script type="text/javascript">
     $("#userBtn").click(function(event)
     {
       event.preventDefault(); // cancel default behavior
     }); 
-
-
+    loadPosts();
   </script>
-  
   </body>
 </html>

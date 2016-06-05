@@ -12,3 +12,85 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+.collection {
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.collection .collection-item {
+  background-color: #fff;
+  line-height: 2rem;
+  padding: 0px 10px;
+  margin: 0;
+}
+
+.collection .comment {
+  background: whitesmoke;
+  padding: 2px;
+  margin: -10px 0;
+}
+
+.collection .collection-item.avatar .title {
+  font-size: 20px;
+  padding-top: 12px;
+  color: indigo;
+}
+
+.collection .collection-item.avatar .desc {
+  color: indigo;
+}
+
+.collection .collection-item .title {
+  font-size: 20px;
+  padding-top: 12px;
+  color: indigo;
+}
+
+.collection .collection-item .desc {
+  color: indigo;
+}
+
+.collection .collection-item .commentTitle {
+  color: black;
+}
+
+.collection .collection-item .commentDesc {
+  color: black;
+}
+
+
+
+.card-panel {
+  transition: box-shadow .25s;
+  padding: 10px 20px;
+  margin: 0rem 0 1rem 0;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+span.badge {
+  min-width: 3rem;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: inherit;
+  color: #757575;
+  position: absolute;
+  right: 15px;
+}
+
+span.badge.new {
+  font-weight: 300;
+  font-size: 0.7rem;
+  color: #fff;
+  background-color: #26a69a;
+  border-radius: 0px;
+}
+
+span.badge.new:after {
+  content: " ";
+}
+
