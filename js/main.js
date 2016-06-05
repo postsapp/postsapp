@@ -147,14 +147,14 @@ function getCommentContent(id, email, title, body){
 		'</p></li><br/>';
 }
 
-function compare(a,b) {
-  if (a.timestamp > b.timestamp)
-    return -1;
-  else if (a.timestamp < b.timestamp)
-    return 1;
-  else 
-    return 0;
-}
+// function compare(a,b) {
+//   if (a.timestamp > b.timestamp)
+//     return -1;
+//   else if (a.timestamp < b.timestamp)
+//     return 1;
+//   else 
+//     return 0;
+// }
 
 function loadPosts(){
 	$.getJSON(jsonplaceholderAPIPosts, function (data) {
@@ -169,16 +169,15 @@ function loadPosts(){
 	    			// valueToAppend += getPostContent(data[i].id, data[i].timestamp, data[i].title, data[i].body);
 	    			valueToAppendArray.push({
 	    				id: data[i].id, 
-	    				timestamp: data[i].timestamp, 
 	    				title: data[i].title, 
 	    				body: data[i].body
 	    			})
 		    	}
 	    }
-	    valueToAppendArray = valueToAppendArray.sort(compare);
+	    //valueToAppendArray = valueToAppendArray.sort(compare);
 	    var data = valueToAppendArray;
 	    for (var i=0;i<data.length;i++) {
-	    	valueToAppend += getPostContent(data[i].id, data[i].timestamp, data[i].title, data[i].body);
+	    	valueToAppend += getPostContent(data[i].id, data[i].title, data[i].body);
 	    				
 	    }
 	    $('#collectionPosts').append(valueToAppend);
@@ -195,7 +194,7 @@ function postclick(that){
 	getCommentByPostId(id)
 }
 
-function getPostContent(id, timestamp, title, body){
+function getPostContent(id, title, body){
 	// console.log(name, company)
 	return '<a class="collection-item" id="post'+
 		id+
@@ -207,9 +206,6 @@ function getPostContent(id, timestamp, title, body){
 		'<p class="desc">'+
 		body+
 		'</p>'+
-		'<i><p class="desc" style="text-align: right;color:black">'+
-		parseTwitterDate(timestamp)+
-		'</p></i>'+
 	'</a>';
 }
 
@@ -295,22 +291,5 @@ function addClassButtonBadge(value, shade){
 function removeClassButtonBadge(value){
 	$('#' + value + 'Button').removeClass('waves-effect waves-light btn indigo lighten-2');
 	// $('#' + value + 'Badge').removeClass('waves-effect waves-light btn indigo lighten-2');
-}
-
-function parseTwitterDate(tdate) {
-    var date = new Date(parseInt(tdate) * 1000);
-    
-    var monthNames = [
-	  "January", "February", "March",
-	  "April", "May", "June", "July",
-	  "August", "September", "October",
-	  "November", "December"
-	];
-
-	var day = date.getDate();
-	var monthIndex = date.getMonth();
-	var year = date.getFullYear();
-
-    return day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
 
