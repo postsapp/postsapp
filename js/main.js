@@ -1,9 +1,3 @@
-// var jsonplaceholderAPIUsers = "./json/users.json";
-// var jsonplaceholderAPIPosts = "json/posts.json";
-// var jsonplaceholderAPIComments = "json/comments.json";
-// var jsonplaceholderAPIAlbums = "json/albums.json";
-// var jsonplaceholderAPIPhotos = "json/photos.json";
-
 var jsonplaceholderAPIUsers = "http://jsonplaceholder.typicode.com/users";
 var jsonplaceholderAPIPosts = "http://jsonplaceholder.typicode.com/posts";
 var jsonplaceholderAPIComments = "http://jsonplaceholder.typicode.com/comments";
